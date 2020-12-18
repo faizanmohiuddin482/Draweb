@@ -22,10 +22,17 @@ function draw(e) {
   if (e.buttons !== 1) return; // if mouse is not clicked, do not go further
 
   var color = document.getElementById("hex").value;
+  var thick = document.getElementById("strokewidth").value;
 
   ctx.beginPath(); // begin the drawing path
 
-  ctx.lineWidth = 20; // width of line
+  if (thick>40) { //to ensure that max thickness is 40
+    thick=40;
+  }
+  if (thick<1) { //to ensure that min thickness is 1
+    thick=1;
+  }
+  ctx.lineWidth = thick; // width of line
   ctx.lineCap = "round"; // rounded end cap
   ctx.strokeStyle = color; // hex color of line
 
